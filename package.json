@@ -1,23 +1,16 @@
 {
-  "name": "projectwhiskeyromeoindia",
-  "version": "1.0.0",
-  "description": "Private Cloud Computing coursework repository for our Cloud Computing project.",
-  "main": "index.js",
+  "name": "Elastic-Beanstalk-Sample-App",
+  "version": "0.0.1",
+  "private": true,
   "dependencies": {
-    "react": "^16.6.0"
+    "ejs": "latest",
+    "aws-sdk": "latest",
+    "express": "latest",
+    "body-parser": "latest",
+    "multer": "latest",
+    "multer-s3": "latest"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rbhu/ProjectWhiskeyRomeoIndia.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rbhu/ProjectWhiskeyRomeoIndia/issues"
-  },
-  "homepage": "https://github.com/rbhu/ProjectWhiskeyRomeoIndia#readme"
+    "start": "node app.js"
+  }
 }
