@@ -24,6 +24,8 @@ Next steps: Run VM with a Node server on an EC2 instance.
 
 Use ```7z a eb1.X.X.zip * -r -x!*.zip -x!fluff -x!test.jpg``` to zip for EB
 
+*IMPORTANT* Don't forget to add ACCESSKEYID and SECRETACCESSKEY Env vars in config
+
 Useful links:
 - The guide that made me assume this was possible in the first place
 https://medium.freecodecamp.org/how-to-set-up-simple-image-upload-with-node-and-aws-s3-84e609248792
