@@ -44,7 +44,7 @@
 
 
       <div class="footer">
-        <p>&copy; A Hughs, Cole and Glasse Project</p>
+        <p>&copy;  A Hughes, Cole and Glasse Project    v1.5.48</p>
       </div>
 
       <!-- Modal -->
@@ -56,7 +56,8 @@
                <h4 class="modal-title">Provide a few details and we'll be in touch...</h4>
              </div>
              <div class="modal-body">
-               <form id="signupForm" role="form">
+               <!-- <form action="/signup" method="POST" id="signupForm" role="form" enctype="multipart/form-data"> -->
+               <form id="signupForm" role="form" enctype="multipart/form-data">
                  <input type="hidden" id="theme" name="theme" value="<%= theme %>"/>
                  <div class="form-group">
                    <label for="name">Image Tag</label>
@@ -68,12 +69,12 @@
                  </div>
                  <div class="form-group">
                    <label for="email">Image</label>
-                   <input type="file" name="pic" accept="image/*">
+                   <input type="file" class="form-control" id="file" name="image" accept="image/*">
                  </div>
 
              </div>
              <div class="modal-footer">
-               <button id="signup" type="button" class="btn btn-primary">Upload!</button>
+               <button id="signup" type="button" class="btn btn-primary">Upload Me!</button>
              </div>
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
@@ -86,23 +87,50 @@
     <script type="text/javascript">
     $(document).ready(function() {
       $("#signup").click(function() {
-        $.post( "/signup", $("#signupForm").serialize(),
-                function(data) {
-                  $("#signupSuccess").show();
-                }
-              )
-              .error(function(xhr) {
-                switch(xhr.status) {
-                  case 409:
-                    $("#signupDuplicate").show();
-                    break;
-                  default:
-                    $("#signupError").show();
-                }
-              })
-              .always(function() {
-                $("#signupModal").modal('hide');
-              });
+        // $.post( "/signup", contentType: false, $("#signupForm").serialize(),
+        //         function(data) {
+        //           $("#signupSuccess").show();
+        //         }
+        //       )
+        //       .error(function(xhr) {
+        //         switch(xhr.status) {
+        //           case 409:
+        //             $("#signupDuplicate").show();
+        //             break;
+        //           default:
+        //             $("#signupError").show();
+        //         }
+        //       })
+        //       .always(function() {
+        //         $("#signupModal").modal('hide');
+        //       });
+        // $("#signupModal").modal('hide');
+        $.ajax({
+        url: '/signup',
+        type: 'POST',
+        data: new FormData($('form#signupForm')[0]),
+
+        cache: false,
+        contentType: false,
+        processData: false,
+
+        xhr: function() {
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) {
+                // For handling the progress of the upload
+                myXhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        // $('progress').attr({
+                        //     value: e.loaded,
+                        //     max: e.total,
+                        // });
+                    }
+                } , false);
+            }
+            return myXhr;
+        }
+        });
+        $("#signupModal").modal('hide');
       })
     })
     </script>

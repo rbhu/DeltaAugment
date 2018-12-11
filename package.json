@@ -6,7 +6,10 @@
     "ejs": "latest",
     "aws-sdk": "latest",
     "express": "latest",
+    "express-fileupload": "latest",
     "body-parser": "latest",
+    "express-busboy": "latest",
+    "busboy": "latest",
     "multer": "latest",
     "multer-s3": "latest"
   },
