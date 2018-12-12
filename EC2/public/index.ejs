@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>A New Startup: Sign Up Today!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="EC2/static/bootstrap/css/theme/flatly/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="EC2/static/bootstrap/css/jumbotron-narrow.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+
+        <h3 class="text-muted">Image Augmentation</h3>
+      </div>
+	  <% if (flask_debug === 'true') { %>
+      <div class="alert alert-danger">
+      	Flask is in debug mode. This is not safe for production.
+      </div>
+      <% } %>
+      <div id="signupSuccess" class="alert alert-success" style="display:none">
+        <p id="signupSuccessText">Thanks for signing up! You'll be among the first to know when we launch.</p>
+      </div>
+      <div id="signupDuplicate" class="alert alert-success" style="display:none">
+        <p id="signupDuplicateText">Fear not, you're already on the list! You'll be among the first to know when we launch.</p>
+      </div>
+      <div id="signupError" class="alert alert-info" style="display:none">
+        <p id="signupErrorText">Well this is embarrassing. It looks like we're having trouble getting you on the list.</p>
+      </div>
+      <div class="jumbotron">
+        <h1>Augment your images online here...</h1>
+        <p><a class="btn btn-lg btn-success"  data-toggle="modal" href="#signupModal">Start Now!</a></p>
+      </div>
+
+
+      <div class="footer">
+        <p>&copy;  A Hughes, Cole and Glasse Project    v1.5.48</p>
+      </div>
+
+      <!-- Modal -->
+       <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+         <div class="modal-dialog">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h4 class="modal-title">Provide a few details and we'll be in touch...</h4>
+             </div>
+             <div class="modal-body">
+               <!-- <form action="/signup" method="POST" id="signupForm" role="form" enctype="multipart/form-data"> -->
+               <form id="signupForm" role="form" enctype="multipart/form-data">
+                 <input type="hidden" id="theme" name="theme" value="<%= theme %>"/>
+                 <div class="form-group">
+                   <label for="name">Image Tag</label>
+                   <input type="text" class="form-control" id="tag" name="tag" placeholder="Tag">
+                 </div>
+                 <div class="form-group">
+                   <label for="email">Email address</label>
+                   <input type="email" class="form-control" id="email" name="email" placeholder="Your email address">
+                 </div>
+                 <div class="form-group">
+                   <label for="email">Image</label>
+                   <input type="file" class="form-control" id="file" name="image" accept="image/*">
+                 </div>
+
+             </div>
+             <div class="modal-footer">
+               <button id="signup" type="button" class="btn btn-primary">Upload Me!</button>
+             </div>
+           </div><!-- /.modal-content -->
+         </div><!-- /.modal-dialog -->
+       </div><!-- /.modal -->
+
+    </div> <!-- /container -->
+
+    <script src="EC2/static/jquery/jquery-1.11.3.min.js"></script>
+    <script src="EC2/static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $("#signup").click(function() {
+        // $.post( "/signup", contentType: false, $("#signupForm").serialize(),
+        //         function(data) {
+        //           $("#signupSuccess").show();
+        //         }
+        //       )
+        //       .error(function(xhr) {
+        //         switch(xhr.status) {
+        //           case 409:
+        //             $("#signupDuplicate").show();
+        //             break;
+        //           default:
+        //             $("#signupError").show();
+        //         }
+        //       })
+        //       .always(function() {
+        //         $("#signupModal").modal('hide');
+        //       });
+        // $("#signupModal").modal('hide');
+        $.ajax({
+        url: '/signup',
+        type: 'POST',
+        data: new FormData($('form#signupForm')[0]),
+
+        cache: false,
+        contentType: false,
+        processData: false,
+
+        xhr: function() {
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) {
+                // For handling the progress of the upload
+                myXhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        // $('progress').attr({
+                        //     value: e.loaded,
+                        //     max: e.total,
+                        // });
+                    }
+                } , false);
+            }
+            return myXhr;
+        }
+        });
+        $("#signupModal").modal('hide');
+      })
+    })
+    </script>
+  </body>
+</html>
