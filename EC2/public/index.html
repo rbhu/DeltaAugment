@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Otter Augmenting Co.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="stylesheets/bootstrap/css/theme/flatly/bootstrap.css" rel="stylesheet">
+    <link href="stylesheets/bootstrap/css/jumbotron-narrow.css" rel="stylesheet">
+
+    <script src="scripts/jquery/jquery-1.11.3.min.js"></script>
+    <script src="stylesheets/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="header">
+            <h3 class="text">Image Augmentation</h3>
+        </div> -->
+        <div class="jumbotron">
+            <h1>Otter Augmentation Services</h1>
+        </div>
+
+
+        <form id="imageForm" role="form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="tag">Enter a tag</label>
+                <input type="text" class="form-control" id="tag" name="tag"/>
+            </div>
+            <div class="form-group">
+                <label for="file">Selct an image to upload</label>
+                <input type="file" class="form-control" id="file" name="image" accept="image/*">
+            </div>
+            <div class="form-group">
+              <button id="uploadButton" type="button"  class="btn btn-primary">Upload Me!</button>
+            </div>
+        </form>
+
+
+        <div class="footer">
+            <p>&copy;  A Hughes, Cole and Glasse Project    v1.7.1</p>
+        </div>
+
+
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("#uploadButton").click(function() {
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: new FormData($('form#imageForm')[0]),
+
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+
+                    xhr: function() {
+                        var myXhr = $.ajaxSettings.xhr();
+                        if (myXhr.upload) {
+                            // For handling the progress of the upload
+                            myXhr.upload.addEventListener('progress', function(e) {
+                                if (e.lengthComputable) {
+                                }
+                            } , false);
+                        }
+                        return myXhr;
+                    }
+                });
+                $("#signupModal").modal('hide');
+            })
+        })
+        </script>
+    </div>
+</body>
+</html>

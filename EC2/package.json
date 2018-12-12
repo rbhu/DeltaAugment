@@ -11,7 +11,8 @@
     "express-busboy": "latest",
     "busboy": "latest",
     "multer": "latest",
-    "multer-s3": "latest"
+    "multer-s3": "latest",
+    "path": "latest"
   },
   "scripts": {
     "start": "node app.js"
