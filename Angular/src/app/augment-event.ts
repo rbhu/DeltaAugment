@@ -2,7 +2,7 @@ export class AugmentEvent {
 
   constructor(
     public uid: string,
-    public uploadImage: File,
+    public uploadImage: string,
     public numOfAugments: number,
     public tags?: string
   ) {  }
