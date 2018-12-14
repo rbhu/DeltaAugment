@@ -7,10 +7,14 @@ import { AugmentEvent }    from '../augment-event';
   styleUrls: ['./augment-form.component.css']
 })
 export class AugmentFormComponent{
-  model = new AugmentEvent('Will', '', 66, 'Dr IQ');
+  model = new AugmentEvent('', '', 5, '');
 
   submitted = false;
   onSubmit() { this.submitted = true; }
+
+  newAugmentEvent() {
+    this.model = new AugmentEvent('', '', 5, '');
+  }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
