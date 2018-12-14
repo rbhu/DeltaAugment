@@ -12,3 +12,16 @@ https://stackoverflow.com/questions/16573668/best-practices-when-running-node-js
 
 Setting up Node on EC2
 https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html
+
+
+1) Submit image and form data
+2) Validate form data (tags, num of augs etc)
+3) Get UID
+4) Query DynamoDB if UID exists
+4.1)    If exists, return error
+4.2)    If not, continue with upload
+5) Upload image to S3
+6) Augmented using Lambda
+7) Get resultant URLs from AugOut Bucket
+8) New DynamoDB entry w/ UID, tags, original S3 URL, augmented URLs
+9) Return success to user, user page refreshes
