@@ -39,7 +39,7 @@ async function addDynamoEntry(UID, tags, url, augNum) {
                 S: UID
             },
             "image-tags": {
-                S: tags
+                SS: tags
             },
             "source-url": {
                 S: url
@@ -54,7 +54,7 @@ async function addDynamoEntry(UID, tags, url, augNum) {
 
     return putRequest.then( (data) => {
         return true;
-    }, (error) => {
+    }, (err) => {
         console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
         return false;
     });

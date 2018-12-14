@@ -1,6 +1,8 @@
 var AWS = require('aws-sdk');
 var fs = require('fs');
 
+const BUCKETNAME = process.env.BUCKETNAME || "image-test-iwan";
+
 async function moveToS3(filename, uid, augNum) {
     fs.readFile(filename, function (err, data) {
         AWS.config.loadFromPath('./config_s3.json');
@@ -12,8 +14,8 @@ async function moveToS3(filename, uid, augNum) {
 
         var params = {
             Body: base64data,
-            Bucket: "image-test-iwan",
-            // Bucket: "img-bucket-irw",    
+            Bucket: BUCKETNAME,
+            // Bucket: "img-bucket-irw",
             Key: `${uid}.jpg`,
             ACL: "public-read",
             Metadata: {
