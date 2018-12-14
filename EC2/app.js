@@ -33,7 +33,7 @@ AWS.config.loadFromPath('./config.json');
 // app.use(multer({dest:'.'}).single('file'));
 
 
-var moveToS3 = function (filename) {
+var moveToS3 = function (filename, uid, augNum) {
     fs.readFile(filename, function (err, data) {
         var s3 = new AWS.S3();
         if (err) { throw err; }
@@ -42,9 +42,13 @@ var moveToS3 = function (filename) {
 
         var params = {
             Body: base64data,
-            Bucket: "image-test-iwan",
-            Key: "thot.jpg",
-            ACL: "public-read"
+            // Bucket: "image-test-iwan",
+            Bucket: "img-bucket-irw",
+            Key: `${uid}.jpg`,
+            ACL: "public-read",
+            Metadata: {
+                "num-of-augments": augNum
+            }
         };
         s3.putObject(params, function(err, data) {
             if (err) console.log(err, err.stack); // an error occurred
@@ -59,9 +63,6 @@ var moveToS3 = function (filename) {
     });
     return;
 };
-
-// Read in the file, convert it to base64, store to S3
-
 
 
 
@@ -81,16 +82,21 @@ app.post('/upload', function(req, res) {
     // Using express-fileupload, req.files.<FORM NAME>.data is the buffer
     // For us, that means req.files.image.data is the image data
 
-    var filename = req.body.tag;
-    var img = req.files.image;
+    var tags   = req.body.tags;
+    var uid    = req.body.uid;
+    var imgObj = req.files.image;
+    var augNum = req.body.number;
+    var now    = Date.now();
 
-    img.mv(__dirname + `/tmp/${filename}.jpg`, function(err) {
+    var filename = __dirname + `/tmp/${now}-${uid}.jpg`
+
+    imgObj.mv(filename, function(err) {
         if (err) {
             console.log(err);
             return res.status(500).send(err);
         }
-        moveToS3(__dirname + `/tmp/${filename}.jpg`);
-        return res.json({'woohoo':'File uploaded!'});
+        moveToS3(filename, uid, augNum);
+        return res.json({'comment':'File uploaded!'});
     });
 });
 
