@@ -1,0 +1,20 @@
+<form #imageForm = "ngForm" role="form" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="uid">Enter a Unique ID</label>
+        <input type="text" class="form-control" id="uid" required [(ngModel)]="model.uid" name="uid" />
+    </div>
+    <div class="form-group">
+        <label for="tags">Enter image tags</label>
+        <input type="text" class="form-control" id="tag" [(ngModel)]="model.tags" name="tags" />
+    </div>
+    <div class="form-group">
+        <label for="file">Selct an image to upload</label>
+        <input type="file" class="form-control" id="uploadImage" required [(ngModel)]="model.uploadImage" name="uploadImage" />
+    </div>
+    {{model.uploadImage}}
+    <div class="form-group">
+        <label for="number">Number of Augmentations to perform</label>
+        <input type="number" class="form-control" id="numOfAugments" min="2" max="20" required [(ngModel)]="model.numOfAugments" name="numOfAugments" >
+    </div>
+    <button id="uploadButton" type="submit"  class="btn btn-primary">Upload Me!</button>
+</form>
