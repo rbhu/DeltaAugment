@@ -10,11 +10,10 @@
 
     <div class="form-group">
         <label for="uploadImage">Selct an image to upload</label>
-        <input type="file" class="form-control" id="uploadImage" required [(ngModel)]="model.uploadImage" name="uploadImage"  #uploadImage="ngModel" />
-    </div>
-    <div [hidden]="uploadImage.valid || uploadImage.pristine"
-         class="alert alert-danger">
-      image required
+        <input #imageInput
+         type="file"
+         accept="image/*"
+         (change)="processFile(imageInput)">
     </div>
 
     <div class="form-group">
@@ -31,5 +30,5 @@
         <input type="text" class="form-control" id="tags" [(ngModel)]="model.tags" name="tags"/>
     </div>
 
-    <button type="submit" class="btn btn-success" (click)="newAugmentEvent(); imageForm.reset()" [disabled]="!imageForm.form.valid">Submit</button>
+    <button type="submit" class="btn btn-success" (click)="onSubmit();imageForm.reset() " [disabled]="!imageForm.form.valid">Submit</button>
 </form>
