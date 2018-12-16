@@ -1,0 +1,11 @@
+mat-grid-tile {
+  /* background: lightblue; */
+}
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.img-rounded {
+  object-fit: cover;
+  width: 50px;
+  height: 100px;
+}

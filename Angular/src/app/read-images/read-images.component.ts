@@ -16,14 +16,16 @@ export class ReadImagesComponent implements OnInit {
   constructor(private readService: ReadImagesService) { }
 
   ngOnInit() {
+        this.imageList = this.readService.getFiles();
+
   }
 
-  showFiles(enable: boolean) {
-    this.showFile = enable;
-
-    if (enable) {
-      this.imageList = this.readService.getFiles();
-    }
-  }
+  // showFiles(enable: boolean) {
+  //   this.showFile = enable;
+  //
+  //   if (enable) {
+  //     this.imageList = this.readService.getFiles();
+  //   }
+  // }
 
 }
