@@ -1,0 +1,19 @@
+<br><br><br>
+
+<button class="button btn-info" *ngIf='showFile'
+	(click)='showFiles(false)'>Hide Image</button>
+
+<button class="button btn-info" *ngIf='!showFile'
+	(click)='showFiles(true)'>Show Images</button>
+
+<br>
+<div [hidden]="!showFile">
+	<div class="panel panel-primary">
+		<div class="panel-heading">List of images in bucket</div>
+		<div *ngFor="let file of imageList | async">
+			<div class="panel-body">
+				<app-details-upload [image]='file'></app-details-upload>
+			</div>
+		</div>
+	</div>
+</div>
