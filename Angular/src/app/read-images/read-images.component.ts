@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReadImagesService } from '../read-images/read-images.service';
 import { Observable } from 'rxjs/Observable';
-import { ImageName } from '../image-name';
+import { ImageData } from '../image-data';
 
 @Component({
   selector: 'app-read-images',
@@ -10,22 +10,12 @@ import { ImageName } from '../image-name';
 })
 export class ReadImagesComponent implements OnInit {
 
-  showFile = false;
-  imageList: Observable<Array<ImageName>>;
+  imageList: Observable<Array<ImageData>>;
 
   constructor(private readService: ReadImagesService) { }
 
   ngOnInit() {
         this.imageList = this.readService.getFiles();
-
   }
-
-  // showFiles(enable: boolean) {
-  //   this.showFile = enable;
-  //
-  //   if (enable) {
-  //     this.imageList = this.readService.getFiles();
-  //   }
-  // }
 
 }

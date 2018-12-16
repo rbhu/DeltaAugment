@@ -1,34 +1,13 @@
 <br><br><br>
-<!--
-<button class="button btn-info" *ngIf='showFile'
-	(click)='showFiles(false)'>Hide Image</button>
-
-<button class="button btn-info" *ngIf='!showFile'
-	(click)='showFiles(true)'>Show Images</button> -->
-
-<br>
-<!-- <div [hidden]="!showFile"> -->
-	<div class="panel panel-primary">
-		<div class="panel-heading">List of images in bucket</div>
-		<mat-grid-list cols="4" rowHeight="2:1">
-			<div *ngFor="let file of imageList | async">
-				<!-- <div class="panel-body"> -->
-							<mat-grid-tile><app-details-upload [image]='file'></app-details-upload></mat-grid-tile>
-						<!-- </div> -->
-					</div>
-					</mat-grid-list>
-				</div>
-			<!-- </div> -->
 
 
-	<!-- <mat-grid-list cols="4" rowHeight="2:1">
-  <div class="images" *ngFor="let image of imageList">
-    <!-- <ng-template #depositTarget></ng-template> -->
-    <!-- <mat-grid-tile><img src={{image}} class="img-rounded" alt="test"></mat-grid-tile>
-
-  <!-- <mat-grid-tile><img src="assets/images/arch.jpg" class="img-rounded" alt="ARCH"></mat-grid-tile>
-  <mat-grid-tile><img src="assets/images/baz.png" class="img-rounded" alt="ARCH"></mat-grid-tile>
-  <mat-grid-tile><img src="assets/images/cans.jpg" class="img-rounded" alt="ARCH"></mat-grid-tile>
-  <mat-grid-tile><img src="assets/images/car.jpeg" class="img-rounded" alt="ARCH"></mat-grid-tile>
-
-</mat-grid-list> -->
+<div class="panel panel-primary">
+	<div class="panel-heading"></div>
+	<mat-grid-list cols="4" rowHeight="2:1">
+		<div *ngFor="let file of imageList | async">
+			<mat-grid-tile>
+				<app-image-load [image]='file'></app-image-load>
+			</mat-grid-tile>
+		</div>
+	</mat-grid-list>
+</div>

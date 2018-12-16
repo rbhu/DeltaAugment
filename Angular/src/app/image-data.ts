@@ -1,5 +1,5 @@
 
-export class ImageName {
+export class ImageData {
     name: string;
     url: string;
 
