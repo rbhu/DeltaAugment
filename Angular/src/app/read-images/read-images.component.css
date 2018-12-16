@@ -1,11 +1,28 @@
 mat-grid-tile {
-  background: black;
+  background: white;
+  align: center;
 }
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.img-rounded {
+/* .img-rounded {
   object-fit: cover;
   width: 50px;
   height: 100px;
+} */
+
+/* .list-cell {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+} */
+
+.list-cell:hover {
+  border: 10px;
+  background: lightgray;
 }
+
+/* .flexi {
+  width: 100%; display: flex; align-items: flex-start;
+} */
