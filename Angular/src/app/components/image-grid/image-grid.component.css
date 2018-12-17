@@ -1,0 +1,23 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+mat-grid-tile {
+  background: white;
+  align: center;
+}
+
+.list-cell:hover {
+  border: 10px;
+  background: lightgray;
+}
+
+
+.scaleToFit {
+  width:90%;
+  height:90%;
+}
+
+/* .img-rounded {
+  object-fit: cover;
+  /* width: 50px;
+  height: 100px;
+} */
