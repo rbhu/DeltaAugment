@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ReadImagesService } from '../../services/read-images.service';
 import { ImageData } from '../../models/image-data';
-// import { NgbdModalBasic } from '../image-popup/image-popup.component';
 import { ViewChild } from '@angular/core';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import { MatDialog } from '@angular/material';

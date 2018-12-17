@@ -1,11 +1,12 @@
-<br><br>
-<div class="panel-heading">Here is a selection of images augmented so far...</div>
-<mat-grid-list cols="4" rowHeight="4:3" gutterSize="10px" layout-align="center">
-	<div *ngFor="let file of imageList | async">
-		<div class="flexi">
-			<mat-grid-tile class="list-cell img-rounded">
-				<img (click)="openDialog(file.url)" src="{{file.url}}" class="scaleToFit img-rounded" alt="ARCH" layout-fill>
-			</mat-grid-tile>
+<div class="container">
+	<br><br>
+	<mat-grid-list cols="4" rowHeight="4:3" gutterSize="10px" layout-align="center">
+		<div *ngFor="let file of imageList | async">
+			<div class="flexi">
+				<mat-grid-tile class="list-cell rounded">
+					<img (click)="openDialog(file.url)" src="{{file.url}}" class="scaleToFit rounded" alt="ARCH" layout-fill>
+				</mat-grid-tile>
+			</div>
 		</div>
-</mat-grid-list>
+	</mat-grid-list>
 </div>

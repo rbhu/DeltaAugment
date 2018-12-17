@@ -22,7 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   declarations: [
     AppComponent,
     ImageGridComponent,
-    ImagePopupComponent
+    ImagePopupComponent,
     NavbarComponent,
     AugmentFormComponent
   ],
