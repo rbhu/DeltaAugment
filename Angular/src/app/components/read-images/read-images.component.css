@@ -1,9 +1,11 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
 mat-grid-tile {
   background: white;
   align: center;
 }
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* .img-rounded {
   object-fit: cover;
