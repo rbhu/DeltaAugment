@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { AugmentEvent }    from '../../models/augment-event';
+import { AugmentEvent } from '../../models/augment-event';
 import { AugmentService } from '../../services/augment.service';
-import 'rxjs/Rx';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -14,8 +13,10 @@ class ImageSnippet {
 })
 
 export class AugmentFormComponent {
-    constructor(private augmentService: AugmentService) { }
-    model = new AugmentEvent('', 5, '');
+    constructor(private augmentService: AugmentService) {    }
+
+    model = new AugmentEvent();
+
     selectedFile: ImageSnippet;
 
     processFile(imageInput: any) {
@@ -32,16 +33,6 @@ export class AugmentFormComponent {
         (res) => {
         },
         (err) => {
-        })
+        });
     }
 }
-
-
-
-
-//
-// this.imageService.uploadImage(this.selectedFile.file).subscribe(
-//   (res) => {
-//   },
-//   (err) => {
-//   })

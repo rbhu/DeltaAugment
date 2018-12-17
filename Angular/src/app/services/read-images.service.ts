@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+// import 'rxjs/add/observable/of';
+
 import { ImageData } from '../models/image-data';
 import { of } from 'rxjs';
 
