@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReadImagesService } from '../read-images/read-images.service';
 import { Observable } from 'rxjs/Observable';
-import { ImageData } from '../image-data';
+import { ReadImagesService } from '../../services/read-images.service';
+import { ImageData } from '../models/image-data';
 
 @Component({
   selector: 'app-read-images',

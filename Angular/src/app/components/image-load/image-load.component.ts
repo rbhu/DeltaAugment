@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ImageData } from '../image-data';
+import { ImageData } from '../../models/image-data';
 
 @Component({
   selector: 'app-image-load',

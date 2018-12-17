@@ -4,7 +4,7 @@ import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { ImageData } from '../image-data';
+import { ImageData } from '../models/image-data';
 import { of } from 'rxjs';
 
 @Injectable()
