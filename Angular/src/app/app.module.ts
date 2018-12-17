@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MatGridListModule} from '@angular/material/grid-list';
+import {MatGridListModule, MatDialogModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 
 // Components
@@ -13,21 +13,27 @@ import {AugmentFormComponent} from './components/augment-form/augment-form.compo
 import {ImageGridComponent} from './components/image-grid/image-grid.component';
 
 // Services
-import {ReadImagesService} from './services/read-images.service';
-import {AugmentService} from './services/augment.service';
+import { ReadImagesService } from './services/read-images.service';
+import { AugmentService } from './services/augment.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AugmentFormComponent,
     ImageGridComponent,
+    NavbarComponent,
+    AugmentFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+      AugmentFormComponent,
   ],
   providers: [
     ReadImagesService,

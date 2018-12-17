@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AugmentEvent } from '../../models/augment-event';
 import { AugmentService } from '../../services/augment.service';
+import { MatDialogRef } from '@angular/material'
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -13,7 +14,7 @@ class ImageSnippet {
 })
 
 export class AugmentFormComponent {
-    constructor(private augmentService: AugmentService) {    }
+    constructor(private augmentService: AugmentService, public dialogRef: MatDialogRef<AugmentFormComponent>) {    }
 
     model = new AugmentEvent();
 
@@ -29,10 +30,13 @@ export class AugmentFormComponent {
       }
 
     onSubmit() {
+      this.dialogRef.close()
       this.augmentService.uploadImage(this.selectedFile.file, this.model).subscribe(
         (res) => {
         },
         (err) => {
         });
+
+
     }
 }
