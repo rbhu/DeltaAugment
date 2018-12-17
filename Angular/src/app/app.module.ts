@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MatGridListModule, MatDialogModule} from '@angular/material';
+import {MatGridListModule, MatDialogModule, MatSnackBarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 
 // Components
@@ -30,7 +30,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   entryComponents: [
       AugmentFormComponent,
