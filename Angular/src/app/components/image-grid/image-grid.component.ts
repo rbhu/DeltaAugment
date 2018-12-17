@@ -21,7 +21,7 @@ export class ImageGridComponent implements OnInit {
         this.imageList = this.readService.getFiles();
   }
 
-  openDialog(public url: string) : void {
+  openDialog(public url: string) {
     const dialogRef = this.dialog.open(ImagePopupComponent,{
       data: {
         image: url

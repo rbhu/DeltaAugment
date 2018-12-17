@@ -34,7 +34,7 @@ export class AugmentFormComponent {
       }
 
     onSubmit() {
-      this.dialogRef.close()
+      this.dialogRef.close();
       this.snackBar.open("Upload successful", "OK", {
         duration: 2000,
       });
