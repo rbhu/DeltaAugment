@@ -8,14 +8,12 @@ import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'app-read-images',
+  selector: 'app-image-grid',
   templateUrl: './image-grid.component.html',
   styleUrls: ['./image-grid.component.css']
 })
 
 export class ImageGridComponent implements OnInit {
-
-  // @Input() image: ImageData;
 
   imageList: Observable<Array<ImageData>>;
   constructor(private readService: ReadImagesService, public dialog: MatDialog) {   }

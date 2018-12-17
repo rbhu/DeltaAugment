@@ -1,19 +1,11 @@
 <br><br>
-
-
-<!-- <div class="panel panel-primary"> -->
-	<div class="panel-heading">Here is a selection of images augmented so far...</div>
-
-	<mat-grid-list cols="4" rowHeight="4:3" gutterSize="10px" layout-align="center">
-		<div *ngFor="let file of imageList | async">
-			<div class="flexi">
+<div class="panel-heading">Here is a selection of images augmented so far...</div>
+<mat-grid-list cols="4" rowHeight="4:3" gutterSize="10px" layout-align="center">
+	<div *ngFor="let file of imageList | async">
+		<div class="flexi">
 			<mat-grid-tile class="list-cell img-rounded">
 				<img (click)="openDialog(file.url)" src="{{file.url}}" class="scaleToFit img-rounded" alt="ARCH" layout-fill>
-				<!-- <button class="btn btn-lg btn-outline-primary" (click)="popupComponent.open(content)">Launch demo modal</button> -->
-				<!-- <button (click)="openDialog()">Open Modal 1</button> -->
-
 			</mat-grid-tile>
-			</div>
 		</div>
-	</mat-grid-list>
-<!-- </div> -->
+</mat-grid-list>
+</div>
