@@ -20,9 +20,10 @@ export class AugmentFormComponent {
         public snackBar: MatSnackBar
      ){ }
 
-    model = new AugmentEvent();
-
-    selectedFile: ImageSnippet;
+    private model = new AugmentEvent();
+    private selectedFile: ImageSnippet;
+    private spinnerVisibility: string = "hidden";
+    private isButtonDisabled: boolean = true;
 
     processFile(imageInput: any) {
         const file: File = imageInput.files[0];
@@ -34,16 +35,21 @@ export class AugmentFormComponent {
       }
 
     onSubmit() {
-      this.dialogRef.close();
-      this.snackBar.open("Upload successful", "OK", {
-        duration: 2000,
-      });
+      // (document.querySelector('mat-spinner') as HTMLElement).
+      this.spinnerVisibility = "visible";
       this.augmentService.uploadImage(this.selectedFile.file, this.model).subscribe(
         (res) => {
+          this.spinnerVisibility = "hidden";
+          this.isButtonDisabled = false;
         },
         (err) => {
+          this.spinnerVisibility = "hidden";
         });
-
-
     }
 }
+
+//CODE FOR CLOSING THE POPUP
+// this.dialogRef.close();
+// this.snackBar.open("Upload successful", "OK", {
+//   duration: 2000,
+// });

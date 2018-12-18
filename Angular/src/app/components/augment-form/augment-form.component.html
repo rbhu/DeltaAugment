@@ -38,4 +38,7 @@
       <mat-dialog-actions>
         <button type="submit" class="btn btn-success" (click)="onSubmit();imageForm.reset() " [disabled]="!imageForm.form.valid">Submit</button>
       </mat-dialog-actions>
+
   </form>
+  <button class="btn btn-danger download-button" [disabled]="isButtonDisabled" >Download</button>
+  <mat-spinner [diameter]="30" [ngStyle]="{'visibility': spinnerVisibility}"></mat-spinner>

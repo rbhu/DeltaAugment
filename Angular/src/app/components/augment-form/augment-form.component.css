@@ -5,3 +5,14 @@
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
 }
+
+.download-button {
+  position: relative;
+  top: -20px;
+  float:right;
+}
+
+mat-spinner {
+  top: -15px;
+  margin: 0 auto;
+}
