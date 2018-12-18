@@ -40,5 +40,5 @@
       </mat-dialog-actions>
 
   </form>
-  <button class="btn btn-danger download-button" [disabled]="isButtonDisabled" >Download</button>
+  <button class="btn btn-danger download-button" [disabled]="isButtonDisabled" (click)="downloadImage();">Download</button>
   <mat-spinner [diameter]="30" [ngStyle]="{'visibility': spinnerVisibility}"></mat-spinner>

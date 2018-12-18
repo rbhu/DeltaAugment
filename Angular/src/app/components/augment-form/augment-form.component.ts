@@ -23,7 +23,8 @@ export class AugmentFormComponent {
     private model = new AugmentEvent();
     private selectedFile: ImageSnippet;
     private spinnerVisibility: string = "hidden";
-    private isButtonDisabled: boolean = true;
+    private isButtonDisabled: boolean = false;
+    private downloadLink : string = "https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/"
 
     processFile(imageInput: any) {
         const file: File = imageInput.files[0];
@@ -41,15 +42,16 @@ export class AugmentFormComponent {
         (res) => {
           this.spinnerVisibility = "hidden";
           this.isButtonDisabled = false;
+          this.snackBar.open("Upload successful", "OK", {
+            duration: 2000,
+          });
         },
         (err) => {
           this.spinnerVisibility = "hidden";
         });
     }
-}
 
-//CODE FOR CLOSING THE POPUP
-// this.dialogRef.close();
-// this.snackBar.open("Upload successful", "OK", {
-//   duration: 2000,
-// });
+    downloadImage() {
+      // href="{{downloadLink}}/augment_{{model.uid}}/augment_{{model.uid}}.zip
+    }
+}
