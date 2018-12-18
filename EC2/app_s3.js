@@ -14,8 +14,8 @@ async function moveToS3(filename, uid, augNum) {
 
         var params = {
             Body: base64data,
-            Bucket: BUCKETNAME,
-            // Bucket: "img-bucket-irw",
+            // Bucket: BUCKETNAME,
+            Bucket: "img-bucket-irw",
             Key: `${uid}.jpg`,
             ACL: "public-read",
             Metadata: {

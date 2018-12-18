@@ -17,7 +17,7 @@ var BUCKETNAME = process.env.BUCKETNAME || "image-test-iwan";
 
 var app = express();
 
-var staticPath = path.join(__dirname, '/public');
+var staticPath = path.join(__dirname, '/public/Angular');
 app.use(express.static(staticPath));
 
 app.use(fileUp());

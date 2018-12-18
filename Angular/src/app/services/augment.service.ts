@@ -20,7 +20,7 @@ export class AugmentService {
       'imageMetadata' : model
    };
 
-   return this.http.post('/', upload);
+   return this.http.post('/upload', upload);
 
  }
 
