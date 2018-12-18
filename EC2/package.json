@@ -3,16 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "ejs": "latest",
     "aws-sdk": "latest",
     "express": "latest",
     "express-fileupload": "latest",
     "body-parser": "latest",
     "express-busboy": "latest",
-    "busboy": "latest",
-    "multer": "latest",
-    "multer-s3": "latest",
-    "path": "latest"
+    "path": "latest",
+    "validator": "latest"
   },
   "scripts": {
     "start": "node app.js"
