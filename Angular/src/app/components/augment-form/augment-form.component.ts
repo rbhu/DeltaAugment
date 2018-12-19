@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AugmentEvent } from '../../models/augment-event';
 import { AugmentService } from '../../services/augment.service';
 import { MatDialogRef, MatSnackBar } from '@angular/material'
+import * as AWS from 'aws-sdk/global';
+import * as S3 from 'aws-sdk/clients/s3';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -53,5 +55,12 @@ export class AugmentFormComponent {
 
     downloadImage() {
       // href="{{downloadLink}}/augment_{{model.uid}}/augment_{{model.uid}}.zip
+      var win = window.open("https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/augment_will/augment_will.zip", '_blank');
+      win.focus();
+
+
+
+
+
     }
 }
