@@ -17,7 +17,7 @@ var BUCKETNAME = process.env.BUCKETNAME || "image-test-iwan";
 
 var app = express();
 
-var staticPath = path.join(__dirname, '/public');
+var staticPath = path.join(__dirname, '/public/Angular');
 app.use(express.static(staticPath));
 
 app.use(fileUp());
@@ -36,7 +36,9 @@ app.post('/upload', function(req, res) {
     // Using express-fileupload, req.files.<FORM NAME>.data is the buffer
     // For us, that means req.files.image.data is the image data
 
-    // Validate the form input
+    // console.log(require('util').inspect(req, { depth: null }));
+
+      // Validate the form input
     var tags   = xValidate.tags(req.body.tags);
     var uid    = xValidate.uid(req.body.uid);
     var augNum = xValidate.augNum(req.body.number);

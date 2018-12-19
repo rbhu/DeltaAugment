@@ -1,16 +1,17 @@
 // Imports
-import {Observable} from 'rxjs/Observable';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {MatGridListModule, MatDialogModule, MatSnackBarModule} from '@angular/material';
-import {HttpClientModule} from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatGridListModule, MatDialogModule, MatSnackBarModule, MatProgressSpinnerModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 // Components
-import {AppComponent} from './app.component';
-import {AugmentFormComponent} from './components/augment-form/augment-form.component';
-import {ImageGridComponent} from './components/image-grid/image-grid.component';
+import { AppComponent } from './app.component';
+import { AugmentFormComponent } from './components/augment-form/augment-form.component';
+import { ImageGridComponent } from './components/image-grid/image-grid.component';
+import { ImagePopupComponent } from './components/image-popup/image-popup.component';
 
 // Services
 import { ReadImagesService } from './services/read-images.service';
@@ -21,6 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   declarations: [
     AppComponent,
     ImageGridComponent,
+    ImagePopupComponent,
     NavbarComponent,
     AugmentFormComponent
   ],
@@ -31,14 +33,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BrowserAnimationsModule,
     MatGridListModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
-      AugmentFormComponent,
+    ImagePopupComponent,
+    AugmentFormComponent
   ],
   providers: [
     ReadImagesService,
-    AugmentService
+    AugmentService,
+
   ],
   bootstrap: [AppComponent]
 })
