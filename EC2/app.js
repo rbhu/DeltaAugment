@@ -89,6 +89,7 @@ app.post('/upload', function(req, res) {
         });
 
         return res.json({
+            'success':'true',
             'comment':'File uploaded!',
             'originalURL': originalURL
         });
