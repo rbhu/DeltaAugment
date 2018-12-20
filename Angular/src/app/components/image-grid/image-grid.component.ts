@@ -15,10 +15,12 @@ import { MatDialog } from '@angular/material';
 export class ImageGridComponent implements OnInit {
 
   imageList: Observable<Array<ImageData>>;
+  breakpoint: number;
   constructor(private readService: ReadImagesService, public dialog: MatDialog) {   }
 
   ngOnInit() {
         this.imageList = this.readService.getFiles();
+        this.breakpoint =(1==1)? 5:1;
   }
 
   openDialog(url: string) {
