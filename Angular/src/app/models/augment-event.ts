@@ -2,7 +2,7 @@ export class AugmentEvent {
 
   public uid: string;
   public numOfAugments: number;
-  public tags?: string;
+  public tags: string;
 
   constructor(
   ) {

@@ -22,11 +22,11 @@ export class AugmentFormComponent {
         public snackBar: MatSnackBar
      ){ }
 
-    private model = new AugmentEvent();
+    public model = new AugmentEvent();
     private selectedFile: ImageSnippet;
-    private spinnerVisibility: string = "hidden";
-    private isButtonDisabled: boolean = false;
-    private downloadLink : string = "https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/"
+    public spinnerVisibility: string = "hidden";
+    public isButtonDisabled: boolean = false;
+    public downloadLink : string = "https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/"
 
     processFile(imageInput: any) {
         const file: File = imageInput.files[0];
@@ -42,11 +42,21 @@ export class AugmentFormComponent {
       this.spinnerVisibility = "visible";
       this.augmentService.uploadImage(this.selectedFile.file, this.model).subscribe(
         (res) => {
-          this.spinnerVisibility = "hidden";
-          this.isButtonDisabled = false;
-          this.snackBar.open("Upload successful", "OK", {
-            duration: 2000,
-          });
+            // console.log(res);
+          if (res.success) {
+              this.spinnerVisibility = "hidden";
+              this.isButtonDisabled = false;
+              this.snackBar.open("Upload successful", "OK", {
+                  duration: 2000,
+              });
+              // $("form")[0].reset();
+              // TODO: DONT CLEAR ON BAD INPUT
+          } else {
+              this.snackBar.open(res.comment, "TRY AGAIN", {
+                  duration: 6000,
+              });
+              this.spinnerVisibility = "hidden";
+          }
         },
         (err) => {
           this.spinnerVisibility = "hidden";
