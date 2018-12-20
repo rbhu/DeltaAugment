@@ -50,7 +50,11 @@ def upload_augmented_image(bucket, img_name):
 def augment(num_of_augments):
     p = Augmentor.Pipeline('/tmp')
     p.rotate(probability = 0.7, max_left_rotation = 20, max_right_rotation = 20)
-    p.zoom(probability = 0.8, min_factor = 1.1, max_factor = 1.5)
+    p.rotate90(probability=0.2)
+    p.rotate270(probability=0.3)
+    p.flip_left_right(probability=0.8)
+    p.flip_top_bottom(probability=0.3)    
+    p.zoom(probability = 0.7, min_factor = 1.1, max_factor = 1.2)
     p.sample(num_of_augments)
 
 

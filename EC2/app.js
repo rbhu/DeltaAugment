@@ -27,6 +27,14 @@ app.get("/", function(req, res) {
     res.sendFile("/public/");
 });
 
+app.get('/getimagelist',   function(req, res) {
+    xS3.listS3files().then(response => {
+        res.status(200);
+        res.json(response);
+    })
+    .catch(console.error);
+});
+
 
 app.post('/upload', function(req, res) {
     console.log(require('util').inspect(req.files, { depth: null }));
