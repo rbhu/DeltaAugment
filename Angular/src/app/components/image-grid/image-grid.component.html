@@ -1,0 +1,11 @@
+<div class="container" style="width: 100%!important; margin: 0!important; padding: 0!important; max-width: 10000px !important">
+		<mat-grid-list cols="5" rowHeight="160px" gutterSize="0px" layout-align="center">
+		<div *ngFor="let file of imageList | async">
+			<div class="flexi">
+				<mat-grid-tile class="col list-cell">
+					<img (click)="openDialog(file.url)" src="{{file.url}}" class="scaleToFit rounded" alt="augmented image thumbnail" layout-fill>
+				</mat-grid-tile>
+			</div>
+		</div>
+	</mat-grid-list>
+</div>

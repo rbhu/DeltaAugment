@@ -14,8 +14,8 @@ async function moveToS3(filename, uid, augNum) {
 
         var params = {
             Body: base64data,
-            Bucket: BUCKETNAME,
-            // Bucket: "img-bucket-irw",
+            // Bucket: BUCKETNAME,
+            Bucket: "img-bucket-irw",
             Key: `${uid}.jpg`,
             ACL: "public-read",
             Metadata: {
@@ -41,5 +41,31 @@ async function moveToS3(filename, uid, augNum) {
     });
 };
 
+  function listS3files() {
+    AWS.config.loadFromPath('./config_s3.json');
+
+    return new Promise((resolve, reject) => {
+        let s3 = new AWS.S3();
+        var params = {
+            Bucket: "img-bucket-irw",
+        };
+        s3.listObjects(params, function(err, data) {
+            if (err) {
+                console.log(err, err.stack);
+                reject(err);
+            }
+            else {
+                console.log("app_s3.js...");
+                console.log(`Data from S3 ${data}`);
+                resolve((data));
+            }
+
+        });
+
+    });
+
+}
+
 
 module.exports.moveToS3 = moveToS3;
+module.exports.listS3files = listS3files;

@@ -3,3 +3,6 @@
 *config*.json
 # Elastic Beanstalk CLI Files
 .elasticbeanstalk/*
+
+EC2/public/Angular
+copy_to_EC2.bat
