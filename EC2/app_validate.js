@@ -2,8 +2,9 @@ var validator = require('validator');
 
 // Expected input: String representation of an integer between 2-200 inclusive
 // Returns -1 if invalid, userNum otherwise
-function augNum(userNum) {
-    if (userNum === null || userNum === undefined) return -1;
+function augNum(body) {
+    if (typeof body.number === 'undefined' || body.number === null) return -1;
+    var userNum = body.number;
     var isInt = validator.isInt(userNum, {gt: 1, lt: 20});
     if (isInt === false) return -1;
     return userNum;
@@ -11,8 +12,9 @@ function augNum(userNum) {
 
 // Expected input: String representation of comma separated list of Alpha-only substrings
 // Returns -1 if invalid, array of tags otherwise
-function tags(userTags) {
-    if (userTags === null || userTags === undefined) return -1;
+function tags(body) {
+    if (typeof body.tags === 'undefined') return -1;
+    var userTags = body.tags;
     var tags = userTags.split(",");
     var outputTags = [];
     for (var i = 0; i < tags.length; i++) {
@@ -28,8 +30,9 @@ function tags(userTags) {
 
 // Expected input: AlphaNumeric string
 // Returns -1 if invalid, userUid otherwise
-function uid(userUid) {
-    if (userUid === null || userUid === undefined) return -1;
+function uid(body) {
+    if (typeof body.uid === 'undefined' || body.uid === null) return -1;
+    var userUid = body.uid;
     var isAlphaNum = validator.isAlphanumeric(userUid);
     if (isAlphaNum === false) return -1;
     if (userUid.length > 20)  return -1;

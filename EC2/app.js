@@ -47,9 +47,9 @@ app.post('/upload', function(req, res) {
     // console.log(require('util').inspect(req, { depth: null }));
 
       // Validate the form input
-    var tags   = xValidate.tags(req.body.tags);
-    var uid    = xValidate.uid(req.body.uid);
-    var augNum = xValidate.augNum(req.body.number);
+    var tags   = xValidate.tags(req.body);
+    var uid    = xValidate.uid(req.body);
+    var augNum = xValidate.augNum(req.body);
 
     if (tags == -1 || uid == -1 || augNum == -1) {
         console.log("Is valid input: false");
