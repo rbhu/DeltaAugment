@@ -1,6 +1,6 @@
 <h2>Upload an Image to Augment</h2>
 
-  <form (ngSubmit)="onSubmit()" #imageForm = "ngForm" role="form" enctype="multipart/form-data">
+  <form #imageForm="ngForm" role="form" enctype="multipart/form-data">
       <mat-dialog-content>
       <h4>Step 1: Select an image to upload</h4>
       <div class="form-group">
@@ -13,7 +13,7 @@
 
       <h4>Step 2: Configure parameters</h4>
       <div class="form-group">
-          <label for="uid">Enter a Unique ID (alpha numeric, max length 20)</label>
+          <label for="uid">Enter a Unique ID [alpha numeric, max length 20]</label>
           <input type="text" class="form-control" id="uid" required [(ngModel)]="model.uid" name="uid" #uid="ngModel"/>
       </div>
       <div [hidden]="uid.valid || uid.pristine"
@@ -32,7 +32,7 @@
       </div>
 
       <div class="form-group">
-          <label for="tags">Enter a list of comma separated tags, e.g. animal, cat, black</label>
+          <label for="tags">Enter a list of comma separated tags [e.g. animal, cat, black]</label>
           <input type="text" class="form-control" id="tags" required [(ngModel)]="model.tags" #tags="ngModel" name="tags"/>
       </div>
       <div [hidden]="tags.valid || tags.pristine"
@@ -47,5 +47,5 @@
       </mat-dialog-actions>
 
   </form>
-  <button class="btn btn-danger download-button" [disabled]="isButtonDisabled" (click)="downloadImage();">Download</button>
+  <button class="btn btn-danger download-button" [ngStyle]="{'display': downloadVisibility}" [disabled]="isButtonDisabled" (click)="downloadImage();">Download</button>
   <mat-spinner [diameter]="30" [ngStyle]="{'visibility': spinnerVisibility}"></mat-spinner>

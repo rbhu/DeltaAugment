@@ -25,6 +25,7 @@ export class AugmentFormComponent {
     public model = new AugmentEvent();
     private selectedFile: ImageSnippet;
     public spinnerVisibility: string = "hidden";
+    public downloadVisibility: string = "none";
     public isButtonDisabled: boolean = false;
     public downloadLink : string = "https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/"
 
@@ -44,6 +45,7 @@ export class AugmentFormComponent {
         (res) => {
             // console.log(res);
           if (res.success) {
+              this.downloadVisibility = "block";
               this.spinnerVisibility = "hidden";
               this.isButtonDisabled = false;
               this.snackBar.open("Upload successful", "OK", {
@@ -56,16 +58,18 @@ export class AugmentFormComponent {
                   duration: 6000,
               });
               this.spinnerVisibility = "hidden";
+              this.downloadVisibility = "none";
           }
         },
         (err) => {
           this.spinnerVisibility = "hidden";
+          this.downloadVisibility = "none";
         });
     }
 
     downloadImage() {
-      // href="{{downloadLink}}/augment_{{model.uid}}/augment_{{model.uid}}.zip
-      var win = window.open("https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/augment_will/augment_will.zip", '_blank');
+      var filename = "filename";
+      var win = window.open(`https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/${filename}/${filename}.zip`, '_blank');
       win.focus();
 
 
