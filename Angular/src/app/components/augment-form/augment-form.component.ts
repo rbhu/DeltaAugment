@@ -37,6 +37,16 @@ export class AugmentFormComponent {
         reader.readAsDataURL(file);
       }
 
+    processingFile() {
+        window.setTimeout( () => {
+            this.downloadVisibility = "block";
+            this.spinnerVisibility = "hidden";
+            this.snackBar.open("File processed! Download now.", "DISMISS", {
+                duration: 4000,
+            })
+        }, 5000);
+    }
+
     onSubmit() {
       // (document.querySelector('mat-spinner') as HTMLElement).
       this.spinnerVisibility = "visible";
@@ -44,11 +54,10 @@ export class AugmentFormComponent {
         (res) => {
             // console.log(res);
           if (res.success) {
-              this.downloadVisibility = "block";
-              this.spinnerVisibility = "hidden";
+              this.processingFile();
               this.isButtonDisabled = false;
-              this.snackBar.open("Upload successful", "OK", {
-                  duration: 2000,
+              this.snackBar.open("Upload successful! Processing, please wait...", "WAIT", {
+                  duration: 4000,
               });
               // $("form")[0].reset();
               // TODO: DONT CLEAR ON BAD INPUT
