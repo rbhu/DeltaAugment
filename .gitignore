@@ -6,3 +6,4 @@
 
 EC2/public/Angular
 copy_to_EC2.bat
+load/node_modules

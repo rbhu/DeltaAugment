@@ -1,5 +1,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+mat-grid-list {
+    margin-bottom: 50px !important;
+}
+
 mat-grid-tile {
   background: white;
   align: center;

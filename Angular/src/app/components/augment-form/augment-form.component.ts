@@ -25,8 +25,8 @@ export class AugmentFormComponent {
     public model = new AugmentEvent();
     private selectedFile: ImageSnippet;
     public spinnerVisibility: string = "hidden";
+    public downloadVisibility: string = "none";
     public isButtonDisabled: boolean = false;
-    public downloadLink : string = "https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/"
 
     processFile(imageInput: any) {
         const file: File = imageInput.files[0];
@@ -37,6 +37,16 @@ export class AugmentFormComponent {
         reader.readAsDataURL(file);
       }
 
+    processingFile() {
+        window.setTimeout( () => {
+            this.downloadVisibility = "block";
+            this.spinnerVisibility = "hidden";
+            this.snackBar.open("File processed! Download now.", "DISMISS", {
+                duration: 4000,
+            })
+        }, 5000);
+    }
+
     onSubmit() {
       // (document.querySelector('mat-spinner') as HTMLElement).
       this.spinnerVisibility = "visible";
@@ -44,10 +54,10 @@ export class AugmentFormComponent {
         (res) => {
             // console.log(res);
           if (res.success) {
-              this.spinnerVisibility = "hidden";
+              this.processingFile();
               this.isButtonDisabled = false;
-              this.snackBar.open("Upload successful", "OK", {
-                  duration: 2000,
+              this.snackBar.open("Upload successful! Processing, please wait...", "WAIT", {
+                  duration: 4000,
               });
               // $("form")[0].reset();
               // TODO: DONT CLEAR ON BAD INPUT
@@ -56,21 +66,18 @@ export class AugmentFormComponent {
                   duration: 6000,
               });
               this.spinnerVisibility = "hidden";
+              this.downloadVisibility = "none";
           }
         },
         (err) => {
           this.spinnerVisibility = "hidden";
+          this.downloadVisibility = "none";
         });
     }
 
     downloadImage() {
-      // href="{{downloadLink}}/augment_{{model.uid}}/augment_{{model.uid}}.zip
-      var win = window.open("https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/augment_will/augment_will.zip", '_blank');
+      var filename = this.model.uid;
+      var win = window.open(`https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/augment_${filename}/augment_${filename}.zip`, '_blank');
       win.focus();
-
-
-
-
-
     }
 }

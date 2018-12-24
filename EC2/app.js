@@ -47,9 +47,9 @@ app.post('/upload', function(req, res) {
     // console.log(require('util').inspect(req, { depth: null }));
 
       // Validate the form input
-    var tags   = xValidate.tags(req.body.tags);
-    var uid    = xValidate.uid(req.body.uid);
-    var augNum = xValidate.augNum(req.body.number);
+    var tags   = xValidate.tags(req.body);
+    var uid    = xValidate.uid(req.body);
+    var augNum = xValidate.augNum(req.body);
 
     if (tags == -1 || uid == -1 || augNum == -1) {
         console.log("Is valid input: false");
@@ -88,7 +88,7 @@ app.post('/upload', function(req, res) {
         // Check if meta object successfully added to DynamoDB
         var addedItemDynamo = await xDynamo.addDynamoEntry(uid, tags, originalURL, augNum);
         console.log(`Put entry in Dynamo: ${addedItemDynamo}`);
-        if (addedItemDynamo === false)  return res.json({'comment':'Failed to add DynamoDB entry, see sys logs'});
+        if (addedItemDynamo === false)  return res.json({'comment':'Failed to add DynamoDB entry. No duplicate tags.'});
 
         // Cleanup tmp files
         fs.unlink(filename, (err) => {

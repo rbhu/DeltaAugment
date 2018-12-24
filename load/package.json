@@ -1,0 +1,15 @@
+{
+  "name": "load",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lt_upload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "form-data": "^2.3.3"
+  }
+}
