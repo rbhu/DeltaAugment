@@ -27,7 +27,6 @@ export class AugmentFormComponent {
     public spinnerVisibility: string = "hidden";
     public downloadVisibility: string = "none";
     public isButtonDisabled: boolean = false;
-    public downloadLink : string = "https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/"
 
     processFile(imageInput: any) {
         const file: File = imageInput.files[0];
@@ -68,13 +67,8 @@ export class AugmentFormComponent {
     }
 
     downloadImage() {
-      var filename = "filename";
-      var win = window.open(`https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/${filename}/${filename}.zip`, '_blank');
+      var filename = this.model.uid;
+      var win = window.open(`https://s3-eu-west-1.amazonaws.com/img-bucket-irw-augmented/augment_${filename}/augment_${filename}.zip`, '_blank');
       win.focus();
-
-
-
-
-
     }
 }
