@@ -1,8 +1,0 @@
-Things you had to do to sort out the mess that is angular:
-- in src, in tsconfig.app.json add "node" to types
-- in polyfills.ts add (window as any).global = window
-
-
-EVERYONE NEEDS READ ACCESS TO THE IMAGES IN img-bucket-irw to do the image grid
-
-changed observable to 'of' instead
