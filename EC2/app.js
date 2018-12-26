@@ -11,13 +11,13 @@ var xS3       = require('./app_s3.js');
 var xDynamo   = require('./app_dynamo.js');
 var xValidate = require('./app_validate.js');
 
-var AWSREGION  = process.env.AWSREGION  || "eu-west-2";
-var BUCKETNAME = process.env.BUCKETNAME || "image-test-iwan";
+var AWSREGION  = process.env.AWSREGION  || "eu-west-1";
+var BUCKETNAME = process.env.BUCKETNAME || "img-bucket-irw";
 
 
 var app = express();
 
-var staticPath = path.join(__dirname, '/public/Angular');
+var staticPath = path.join(__dirname, '/public');
 app.use(express.static(staticPath));
 
 app.use(fileUp());

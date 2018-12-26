@@ -31,12 +31,6 @@ async function moveToS3(filename, uid, augNum) {
                 console.log(data);
                 return 0;
             }
-            /*
-            data = {
-            ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"",
-            VersionId: "Bvq0EDKxOcXLJXNo_Lkz37eM3R4pfzyQ"
-            }
-            */
         });
     });
 };
@@ -55,8 +49,6 @@ async function moveToS3(filename, uid, augNum) {
                 reject(err);
             }
             else {
-                console.log("app_s3.js...");
-                console.log(`Data from S3 ${data}`);
                 resolve((data));
             }
 
