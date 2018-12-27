@@ -38,7 +38,6 @@ app.get('/getimagelist',   function(req, res) {
 
 app.post('/upload', function(req, res) {
     console.log(require('util').inspect(req.files, { depth: null }));
-    console.log(require('util').inspect(req.body, { depth: null }));
 
     // IMPORTANT INFO
     // Using express-fileupload, req.files.<FORM NAME>.data is the buffer
@@ -67,6 +66,10 @@ app.post('/upload', function(req, res) {
     var now    = Date.now();
     var filename = __dirname + `/tmp/${now}-${uid}.jpg`
 
+    if (imgObj.data.length >= 200000) {
+        console.log("Image size too large, rejected");
+        return res.json({'comment':'Image file MUST be less than 200KB'});
+    }
 
     var imgObjPromise = util.promisify(imgObj.mv);
 
