@@ -14,6 +14,7 @@ var xValidate = require('./app_validate.js');
 var AWSREGION  = process.env.AWSREGION  || "eu-west-1";
 var BUCKETNAME = process.env.BUCKETNAME || "img-bucket-irw";
 
+var TIMER = (process.argv.indexOf("--time") != -1) ? true : false;
 
 var app = express();
 
@@ -37,6 +38,9 @@ app.get('/getimagelist',   function(req, res) {
 
 
 app.post('/upload', function(req, res) {
+    if (TIMER) {
+        var start = Date.now();
+    }
     console.log(require('util').inspect(req.files, { depth: null }));
 
     // IMPORTANT INFO
@@ -99,6 +103,10 @@ app.post('/upload', function(req, res) {
             else     console.log(`Successfully deleted tmp file: ${filename}`);
         });
 
+        if (TIMER) {
+            var end = Date.now();
+            console.log(`Successful request, time taken: ${end-start}ms`);
+        }
         return res.json({
             'success':'true',
             'comment':'File uploaded!',
