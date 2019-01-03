@@ -70,9 +70,14 @@ app.post('/upload', function(req, res) {
     var now    = Date.now();
     var filename = __dirname + `/tmp/${now}-${uid}.jpg`
 
-    if (imgObj.data.length >= 200000) {
+    if (imgObj.data.length >= 500000) {
         console.log("Image size too large, rejected");
-        return res.json({'comment':'Image file MUST be less than 200KB'});
+        return res.json({'comment':'Image file MUST be less than 500KB'});
+    }
+
+    if (imgObj.mimetype.includes("jpeg") == false && imgObj.mimetype.includes("jpg") == false) {
+        console.log("File upload format incorrect, rejected");
+        return res.json({'comment':'Image file MUST be a JPEG less than 500KB'});
     }
 
     var imgObjPromise = util.promisify(imgObj.mv);
